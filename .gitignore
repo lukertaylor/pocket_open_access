@@ -51,3 +51,6 @@ app.*.map.json
 
 # Flutter Version Manager
 .fvm/flutter_sdk
+
+# Application config file
+assets/config/app-config.json
