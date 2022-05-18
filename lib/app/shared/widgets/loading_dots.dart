@@ -25,7 +25,9 @@ class LoadingDotsState extends State<LoadingDots>
   void initState() {
     super.initState();
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2000));
+      vsync: this,
+      duration: const Duration(milliseconds: 2000),
+    );
 
     _animation = Tween(begin: -math.pi, end: math.pi).animate(_controller)
       ..addListener(() => setState(() {}));
