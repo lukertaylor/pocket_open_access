@@ -1,6 +1,7 @@
 # Miscellaneous
 *.class
 *.log
+key.properties
 *.pyc
 *.swp
 .DS_Store
@@ -44,3 +45,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Code coverage report
+/coverage/
+
+# Flutter Version Manager
+.fvm/flutter_sdk
