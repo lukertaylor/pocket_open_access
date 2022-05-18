@@ -8,7 +8,7 @@ It is an app an that people with restricted access to the internet and no access
 
 flutter pub get
 
-Often, after running 'flutter pub get', the Dart analyzer loses track of AppLocalizations. This can be resolved by re-running the analyzer from within VSCode (Dart: Reanalyze project).
+Note: often, after running 'flutter pub get', the Dart analyzer loses track of AppLocalizations. This can be resolved by re-running the analyzer from within VSCode (Dart: Reanalyze project).
 
 ## tips for developing in this environment
 
