@@ -21,7 +21,8 @@ class SearchCubit extends Cubit<SearchState> {
       final articles = await _searchRepository.getArticles(
         query: query,
       );
-      emit(SearchComplete(articles));
+      List<Article> _justPdfArticles = _filterJustPdfArticles(articles);
+      emit(SearchComplete(_justPdfArticles));
     } on GetArticlesException catch (e) {
       if (e.error == ApiError.network) {
         emit(NoInternet());
@@ -30,4 +31,16 @@ class SearchCubit extends Cubit<SearchState> {
       }
     }
   }
+}
+
+List<Article> _filterJustPdfArticles(List<Article> allArticles) {
+  List<Article> _justPdfArticles = [];
+  for (var article in allArticles) {
+    if (article.downloadUrl != null) {
+      if (article.downloadUrl!.toLowerCase().contains('.pdf')) {
+        _justPdfArticles.add(article);
+      }
+    }
+  }
+  return _justPdfArticles;
 }
