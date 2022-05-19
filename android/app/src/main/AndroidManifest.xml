@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pocket_open_access">
+    package="com.pocket_open_access">
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="pocket_open_access"
+        android:label="Pocket"
         android:name="${applicationName}"
+        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
         <activity

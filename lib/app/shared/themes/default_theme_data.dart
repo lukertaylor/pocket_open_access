@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../constants.dart';
 
@@ -7,7 +6,6 @@ ThemeData defaultThemeData(BuildContext context) {
   return ThemeData(
     colorScheme: colorScheme(),
     fontFamily: 'Roboto',
-    textTheme: GoogleFonts.openSansTextTheme(Theme.of(context).textTheme),
     textButtonTheme: _textButtonThemeData,
     elevatedButtonTheme: _elevatedButtonThemeData,
     textSelectionTheme: _textSelectionThemeData,

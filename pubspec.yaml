@@ -4,7 +4,7 @@ description: Flutter mobile app to manage Open Access resources. Uses the Core
 
 publish_to: 'none'
 
-version: 1.1.5+8
+version: 1.1.7+10
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
