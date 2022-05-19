@@ -21,7 +21,7 @@ class SearchCubit extends Cubit<SearchState> {
       final articles = await _searchRepository.getArticles(
         query: query,
       );
-      List<Article> _justPdfArticles = _filterJustPdfArticles(articles);
+      List<Article> _justPdfArticles = _filterOnlyPdfArticles(articles);
       emit(SearchComplete(_justPdfArticles));
     } on GetArticlesException catch (e) {
       if (e.error == ApiError.network) {
@@ -33,14 +33,21 @@ class SearchCubit extends Cubit<SearchState> {
   }
 }
 
-List<Article> _filterJustPdfArticles(List<Article> allArticles) {
-  List<Article> _justPdfArticles = [];
+List<Article> _filterOnlyPdfArticles(List<Article> allArticles) {
+  List<Article> onlyPdfArticles = [];
   for (var article in allArticles) {
-    if (article.downloadUrl != null) {
-      if (article.downloadUrl!.toLowerCase().contains('.pdf')) {
-        _justPdfArticles.add(article);
-      }
-    }
+    if (article.downloadUrl == null) continue;
+    if (!_isPdf(article)) continue;
+    if (_alreadyExists(article, onlyPdfArticles)) continue;
+    onlyPdfArticles.add(article);
   }
-  return _justPdfArticles;
+  return onlyPdfArticles;
+}
+
+bool _isPdf(Article article) {
+  return article.downloadUrl!.toLowerCase().contains('.pdf');
+}
+
+bool _alreadyExists(Article article, List<Article> articles) {
+  return articles.any((a) => a.id == article.id);
 }
